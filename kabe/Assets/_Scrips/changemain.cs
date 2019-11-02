@@ -6,19 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class changemain : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    [SerializeField] float resultTime       = 15f;
+
     void Start()
     {
-        Invoke("ChangeScene", 1.5f);
+        Invoke("SceneChange", resultTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
-    void ChangeScene()
+    private void SceneChange()
     {
         SceneManager.LoadScene("main");
     }

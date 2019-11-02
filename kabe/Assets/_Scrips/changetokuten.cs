@@ -6,21 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class changetokuten : MonoBehaviour
 {
+    [SerializeField] float playTime         = 0f;
+    [SerializeField] GameObject _fadePanael = null;
+
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("ChangeScene", 3.0f);
+        Invoke("SceneChange", playTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        if (_fadePanael.GetComponent<FadeScript>().GetFadeState() == FadeScript.FadeState.FADE_OUT_COMPRETED)
+        {
+            SceneManager.LoadScene("tokuten");
+        }
     }
 
-    void ChangeScene()
+    private void SceneChange()
     {
-        SceneManager.LoadScene("tokuten");
+        _fadePanael.GetComponent<FadeScript>().StartFadeOut();
     }
 
 }
