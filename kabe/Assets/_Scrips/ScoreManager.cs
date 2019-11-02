@@ -19,8 +19,8 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] bool resetFlag                     = true;
 
-    private int pinkScore                               = 60;
-    private int blueScore                               = 125;
+    private int pinkScore                               = 0;
+    private int blueScore                               = 0;
     private int topScore                                = 0;
     private int topScorePreserved                       = 0;
 
