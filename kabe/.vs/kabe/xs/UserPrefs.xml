@@ -1,18 +1,27 @@
-﻿<Properties StartupConfiguration="{BB631875-1C57-EA6A-74CF-8D50B71FFE95}|">
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scrips/FadeScript.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scrips/SerialHandler.cs">
     <Files>
       <File FileName="Assets/_Scrips/changemain.cs" Line="14" Column="37" />
-      <File FileName="Assets/_Scrips/changetokuten.cs" Line="19" Column="6" />
+      <File FileName="Assets/_Scrips/changetokuten.cs" />
       <File FileName="Assets/_Scrips/SerialHandler.cs" Line="3" Column="3" />
-      <File FileName="Assets/_Scrips/ScoreManager.cs" Line="30" Column="43" />
-      <File FileName="Assets/_Scrips/FadeScript.cs" Line="101" Column="1" />
+      <File FileName="Assets/_Scrips/ScoreManager.cs" />
+      <File FileName="Assets/_Scrips/FadeScript.cs" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="kabe" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>Assembly-CSharp.csproj</String>
+  </DisabledProjects>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>
