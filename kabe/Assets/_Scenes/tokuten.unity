@@ -533,7 +533,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 111.35
+  m_fontSize: 137.8
   m_fontSizeBase: 294.25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -897,7 +897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &623709932
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5717,7 +5717,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 109.35
+  m_fontSize: 135.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5939,7 +5939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1140654426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6127,7 +6127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1557329782
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -11120,7 +11120,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 108.95
+  m_fontSize: 135.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
