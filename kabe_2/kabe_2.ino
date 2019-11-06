@@ -1,4 +1,8 @@
+#include <DFRobotDFPlayerMini.h>
+
+
 #include <Adafruit_NeoPixel.h>
+#include <SoftwareSerial.h>
 //LED関連
 const int NUM_PIXELS = 24;//LEDの数
 const int DATA_PIN =2;//LEDの信号線のピン番号
@@ -12,13 +16,17 @@ const int MODE_GAME_START=2;//ゲーム開始した瞬間モード
 const int MODE_GAME_NOW=1;//ゲーム中のモード
 const int MODE_MATI=0;//ゲームしてなくて待ってるモード
 // 45秒間（ミリ秒）
-const unsigned long FF_SEC = 45L * 1000L;
+const unsigned long FF_SEC = 48L * 1000L;
+//SE関係
+SoftwareSerial mySoftwareSerial(18,19); // RX, TX
+DFRobotDFPlayerMini myDFPlayer;
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_PIXELS, DATA_PIN, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
-
+Adafruit_NeoPixel pinkneon =Adafruit_NeoPixel(20, 36, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
+Adafruit_NeoPixel blueneon =Adafruit_NeoPixel(20, 37, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
 uint32_t white = strip.Color(255, 255, 255);//白の色味
 uint32_t blue = strip.Color(0, 0, 255);//青の色味
-uint32_t pink = strip.Color(255, 0, 255);//ピンクの色味
+uint32_t pink = strip.Color(255, 0, 20);//ピンクの色味
 uint32_t black = strip.Color(0,0,0);//黒
 uint32_t violet = strip.Color(128,0,128);//紫
 
@@ -37,15 +45,33 @@ void setup() {
   Serial.begin(38400);
   strip.begin();
   strip.show();
+  pinkneon.begin();
+  pinkneon.show();
+  
+      for(int i=0;i<21;i++){
+        pinkneon.setPixelColor(i,0,255,100);
+        pinkneon.show();
+    }
+  pinkneon.show();
+  
+  blueneon.begin();
+  blueneon.show();
+        for(int i=0;i<21;i++){
+        blueneon.setPixelColor(i,blue);
+        blueneon.show();
+    }
+  blueneon.show();
   strip.setBrightness(255);
-//リードスイッチのpin設定
-for(int i=0;i<NUM_SWITCH;i++){
-  pinMode(reedsw[i], INPUT_PULLUP);
-  reed(i);
+  //リードスイッチのpin設定
+  for(int i=0;i<NUM_SWITCH;i++){
+    pinMode(reedsw[i], INPUT_PULLUP);
+    reed(i);
   }
-  
-pinMode(START_PIN,INPUT);//スタートボタンpin設定
-  
+  pinMode(START_PIN,INPUT);//スタートボタンpin設定
+  mySoftwareSerial.begin(9600);//
+  //mp3_set_serial(mySoftwareSerial);
+  myDFPlayer.begin(mySoftwareSerial);
+  myDFPlayer.volume(9);
 }
 
 
@@ -53,46 +79,49 @@ void loop(){
   unsigned long current_time;
   switch(G_mode){
     case MODE_MATI://もし待ち状態だったら
-    gamemode();
+    gamemode();//開始状態になってないか確認
+    break;
     
     case MODE_GAME_START://ゲーム開始状態になったら
     blueteam=0;//得点を0に戻す
     pinkteam=0;
+    for(int i=0;i<NUM_PIXELS;i++){//全部のLEDを白にする
+        strip.setPixelColor(i,white);
+        strip.show();
+    }
+    //Serial.println("音出せ~");
+    myDFPlayer.play(1); //Play the first mp3
+    delay(3000);
     shokika();//LEDを初期化
     G_mode=MODE_GAME_NOW;//ゲーム中にする
+    break;
     
     case MODE_GAME_NOW://ゲーム中のモードだったら
-    current_time=millis();
+    current_time=millis();//現在時刻を確認
+    //Serial.print("ゲーム中だよ");
     if(current_time - G_start_time>=FF_SEC){//終了
+      for(int i=0;i<NUM_PIXELS;i++){//全部のLEDを白にする
+        strip.setPixelColor(i,white);
+        strip.show();
+      }
+
+      //Serial.print("blue:");
+      //Serial.print("fin");
+      //Serial.print("\t");
+      Serial.print(blueteam);
+      Serial.print("\t");
+      //Serial.print("pink:");
+      Serial.print(pinkteam);
+      Serial.println("");
       G_mode=MODE_MATI;
-      Serial.print("blue:");
-      Serial.println(blueteam);
-      Serial.print("pink:");
-      Serial.println(pinkteam);
+      delay(3000);//3秒間 
       }
     else{
-    for(int i=0;i<NUM_SWITCH;i++){
-      int st=reed(i);
-      if((st==1 || st==0)&& strip.getPixelColor(i)==blue){ //青の棒の押し引きがあったら
-        blueteam++;//青チームに得点
-        //Serial.print("blue:");
-        //Serial.println(blueteam);
-        ChangeWhite(i);
-        ChangeLED(blue);
-        strip.show();
-      }
-      else if((st==1 || st==0)&& strip.getPixelColor(i)==pink){ //ピンクの棒の押し引きがあったら
-        pinkteam++;//ピンクチームに得点
-        //Serial.print("pink:");
-        //Serial.println(pinkteam);
-        ChangeWhite(i);
-        ChangeLED(pink);
-        strip.show();
-      }
+    gamemain();
     }
-    }
+        break;
   }
- }
+}
 
 
   
@@ -145,10 +174,14 @@ int reed(int i){//iはリードスイッチの番号
   //ステータス更新
   if(cnt1[i]>15 && reedst[i]==0){//リードスイッチONでステータスがOFFなら
     reedst[i]=1;//ステータスをONにする
+    //Serial.print(i);
+    //Serial.print("がonになりました");
     return 1;
   }
   else if(cnt0[i]>15 && reedst[i]==1){//リードスイッチOFFでステータスがONなら
     reedst[i]=0;//ステータスをOFFにする
+    //Serial.print(i);
+    //Serial.print("がoffになりました");
     return 0;
   }
   else return 2;//別に変化がなければ2を返す
@@ -160,37 +193,51 @@ int reed(int i){//iはリードスイッチの番号
 void gamemode(){
   if(digitalRead(START_PIN)==HIGH){//スタートボタンのピンを読んでONになってたら
     G_mode=MODE_GAME_START;//ゲーム開始にする
-    Serial.println("start!");
+    //Serial.println("start!");
     G_start_time=millis();//ゲーム開始時間測り始める
+    delay(100);
     }
-  else{
-    for(int i=0;i<NUM_PIXELS;i++){
-    led(i);
-    }
-    delay(1000);
+  else{//待機中なのでランダムでledが光るようにする
+    led();
+    delay(3000);
   }
 }
 //=========================================================//
 // 楽しいランダムLED関数
 //=========================================================//
-void led(int num){
+void led(){
   int r=random(4);
   switch(r){
     case 0:
-    strip.setPixelColor(num,pink);
+    for(int i=0;i<NUM_PIXELS;i++){
+    strip.setPixelColor(i,pink);
     strip.show();
+    }
+    break;
     case 1:
-    strip.setPixelColor(num,white);
+    for(int i=0;i<NUM_PIXELS;i++){
+    strip.setPixelColor(i,white);
     strip.show();
+    }
+    break;
     case 2:
-    strip.setPixelColor(num,blue);
+    for(int i=0;i<NUM_PIXELS;i++){
+    strip.setPixelColor(i,blue);
     strip.show();
+    }
+    break;
     case 3:
-    strip.setPixelColor(num,violet);
+    for(int i=0;i<NUM_PIXELS;i++){
+    strip.setPixelColor(i,violet);
     strip.show();
+    }
+    break;
     case 4:
-    strip.setPixelColor(num,black);
+    for(int i=0;i<NUM_PIXELS;i++){
+    strip.setPixelColor(i,black);
     strip.show();
+    }
+    break;
   }
   
 }
@@ -214,4 +261,31 @@ for(int i=0;i<NUM_PIXELS;i+=2){
           }
            strip.show();
 }
-         
+
+void gamemain(){
+  for(int i=0;i<NUM_SWITCH;i++){
+      int st=reed(i);
+      if((st==1 || st==0)&& strip.getPixelColor(i)==blue){ //青の棒の押し引きがあったら
+        //myDFPlayer.play(2);
+        blueteam++;//青チームに得点
+        //Serial.print(i);
+        //Serial.println("がきたよ");
+        //Serial.print("blue:");
+        //Serial.println(blueteam);
+        ChangeWhite(i);
+        ChangeLED(blue);
+        strip.show();
+      }
+      else if((st==1 || st==0)&& strip.getPixelColor(i)==pink){ //ピンクの棒の押し引きがあったら
+        //myDFPlayer.play(2);
+        pinkteam++;//ピンクチームに得点
+        //Serial.print(i);
+        //Serial.println("がきたよ");
+        //Serial.print("pink:");
+        //Serial.println(pinkteam);
+        ChangeWhite(i);
+        ChangeLED(pink);
+        strip.show();
+      }
+}
+}
