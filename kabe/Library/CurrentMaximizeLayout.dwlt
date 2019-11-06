@@ -21,12 +21,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< Updated upstream
     width: 1440
     height: 850
   m_MinSize: {x: 911, y: 422}
   m_MaxSize: {x: 22010, y: 10022}
   vertical: 0
   controlID: 6232
+=======
+    width: 1280
+    height: 706
+  m_MinSize: {x: 915, y: 422}
+  m_MaxSize: {x: 22010, y: 10022}
+  vertical: 0
+  controlID: 149
+>>>>>>> Stashed changes
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -132,7 +141,11 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 422}
   m_MaxSize: {x: 4002, y: 8022}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 6212
+=======
+  controlID: 150
+>>>>>>> Stashed changes
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,9 +208,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 80.326385, y: 42.694397, z: 69.971016}
+    m_Target: {x: -4.688351, y: 5.677853, z: -2.7069101}
     speed: 2
-    m_Value: {x: 80.326385, y: 42.694397, z: 69.971016}
+    m_Value: {x: -4.688351, y: 5.677853, z: -2.7069101}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -230,9 +243,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 31.046286
+    m_Target: 22
     speed: 2
-    m_Value: 31.046286
+    m_Value: 22
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -274,9 +287,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< Updated upstream
     y: 359
     width: 691
     height: 491
+=======
+    y: 298
+    width: 557
+    height: 408
+>>>>>>> Stashed changes
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
@@ -308,7 +327,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 322}
   m_MaxSize: {x: 4004, y: 8022}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 6233
+=======
+  controlID: 77
+>>>>>>> Stashed changes
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -326,8 +349,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< Updated upstream
     width: 238
     height: 568
+=======
+    width: 212
+    height: 472
+>>>>>>> Stashed changes
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 9}
@@ -366,7 +394,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< Updated upstream
       m_ExpandedIDs: 5ce1ffffb6e1fffffce1ffff8cf4ffffd4f9ffff50fbffff543200004c3900002e470000
+=======
+      m_ExpandedIDs: 9cf8fffff0f8ffff02faffff3efaffff96faffffd2faffff6efbffff
+>>>>>>> Stashed changes
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -406,9 +438,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< Updated upstream
     y: 568
     width: 238
     height: 282
+=======
+    y: 472
+    width: 212
+    height: 234
+>>>>>>> Stashed changes
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
@@ -507,7 +545,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Scrips
+    - Assets/_Scenes
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -519,7 +557,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 30330000
     m_LastClickedID: 13104
+<<<<<<< Updated upstream
     m_ExpandedIDs: ffffffff00000000022d0000c42d0000ca2d0000e82d0000302e00004a2e0000702f0000bc2f000044310000fc320000fe3200000033000002330000
+=======
+    m_ExpandedIDs: 00000000182d0000da2d0000e02d0000fe2d0000462e0000522e0000602f00007a2f0000c42f00004831000050330000523300005433000056330000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -545,23 +587,29 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
     m_SelectedIDs: 02270000
     m_LastClickedID: 9986
     m_ExpandedIDs: ffffffff00000000022d0000c42d0000ca2d0000e82d0000302e00004a2e0000702f0000bc2f000044310000fc320000fe3200000033000002330000
+=======
+    m_SelectedIDs: 88360000
+    m_LastClickedID: 0
+    m_ExpandedIDs: ffffffff00000000182d0000522d0000da2d0000e02d0000fe2d0000462e0000522e0000602f00007a2f0000c42f0000ce3000002c3100004831000050330000523300005433000056330000ffffff7f
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: tokuten
+      m_OriginalName: tokuten
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 12562
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
@@ -572,8 +620,13 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< Updated upstream
     m_SelectedInstanceIDs: 02270000
     m_LastClickedInstanceID: 9986
+=======
+    m_SelectedInstanceIDs: 88360000
+    m_LastClickedInstanceID: 13960
+>>>>>>> Stashed changes
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -621,7 +674,11 @@ MonoBehaviour:
     x: 1163
     y: 0
     width: 277
+<<<<<<< Updated upstream
     height: 850
+=======
+    height: 706
+>>>>>>> Stashed changes
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
@@ -665,5 +722,9 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
+<<<<<<< Updated upstream
   m_LastInspectedObjectInstanceID: 9986
+=======
+  m_LastInspectedObjectInstanceID: 13960
+>>>>>>> Stashed changes
   m_LastVerticalScrollValue: 0
