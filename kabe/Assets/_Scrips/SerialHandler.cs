@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using System.IO.Ports;
+using System.IO.Ports;
 using System.Threading;
 
 public class SerialHandler : MonoBehaviour
