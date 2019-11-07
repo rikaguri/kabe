@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.IO.Ports;
+//using System.IO.Ports;
 using System.Threading;
 
 public class SerialHandler : MonoBehaviour
@@ -16,7 +16,7 @@ public class SerialHandler : MonoBehaviour
     private bool isRunning_ = false;
 
     private string message_;
-   private bool isNewMessageReceived_ = false;
+    private bool isNewMessageReceived_ = false;
 
     void Awake()
     {
@@ -49,10 +49,10 @@ public class SerialHandler : MonoBehaviour
 
     private void Close()
     {
-        isRunning_ = false;
+       isRunning_ = false;
 
         if (thread_ != null && thread_.IsAlive)
-        {
+       {
             thread_.Join();
         }
 
@@ -70,7 +70,7 @@ public class SerialHandler : MonoBehaviour
             try
             {
                 if (serialPort_.BytesToRead > 0)
-                {
+               {
                     message_ = serialPort_.ReadLine();
                     isNewMessageReceived_ = true;
                 }

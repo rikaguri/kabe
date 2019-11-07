@@ -1,12 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scrips/ScoreManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scrips/FadeScript.cs">
     <Files>
       <File FileName="Assets/_Scrips/changemain.cs" Line="19" Column="40" />
-      <File FileName="Assets/_Scrips/changetokuten.cs" Line="16" Column="6" />
-      <File FileName="Assets/_Scrips/SerialHandler.cs" />
-      <File FileName="Assets/_Scrips/ScoreManager.cs" Line="166" Column="35" />
-      <File FileName="Assets/_Scrips/blue.cs" />
-      <File FileName="Assets/_Scrips/pink.cs" />
+      <File FileName="Assets/_Scrips/changetokuten.cs" Line="51" Column="1" />
+      <File FileName="Assets/_Scrips/SerialHandler.cs" Line="95" Column="5" />
+      <File FileName="Assets/_Scrips/blue.cs" Line="26" Column="32" />
+      <File FileName="Assets/_Scrips/pink.cs" Line="40" Column="1" />
+      <File FileName="Assets/_Scrips/FadeScript.cs" Line="12" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
