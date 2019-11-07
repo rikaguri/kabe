@@ -19,13 +19,14 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] bool resetFlag                     = true;
 
-    private int pinkScore                               = 0;
-    private int blueScore                               = 0;
+    public static int pinkScore                               = 0;
+    public static int blueScore                               = 0;
     private int topScore                                = 0;
     private int topScorePreserved                       = 0;
 
+	//public SerialHandler serialHandler;
 
-    void Init()
+	void Init()
     {
         PlayerPrefs.SetInt("TopScore", 0);
         pinkScore = 0;
@@ -50,8 +51,10 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //値をリセットしたい時はインスペクター上でresetFlagをtrueにしてください。
-        if(resetFlag){
+		//serialHandler.OnDataReceived += OnDataReceived;
+
+		//値をリセットしたい時はインスペクター上でresetFlagをtrueにしてください。
+		if (resetFlag){
             Init();
         }
 
@@ -151,4 +154,22 @@ public class ScoreManager : MonoBehaviour
             return false;
         }
     }
+    /*
+	void OnDataReceived(string message)
+	{
+		var data = message.Split(
+				new string[] { "\t" }, System.StringSplitOptions.None);
+		if (data.Length < 2) return;
+
+		try
+		{
+			blueScore = int.Parse(data[0]);
+			pinkScore = int.Parse(data[1]);
+			
+		}
+		catch (System.Exception e)
+		{
+			Debug.LogWarning(e.Message);
+		}
+	}*/
 }
