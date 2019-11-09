@@ -3,10 +3,10 @@
     <Files>
       <File FileName="Assets/_Scrips/changemain.cs" Line="19" Column="40" />
       <File FileName="Assets/_Scrips/changetokuten.cs" />
-      <File FileName="Assets/_Scrips/SerialHandler.cs" Line="14" Column="1" />
+      <File FileName="Assets/_Scrips/SerialHandler.cs" Line="11" Column="51" />
       <File FileName="Assets/_Scrips/blue.cs" />
       <File FileName="Assets/_Scrips/pink.cs" />
-      <File FileName="Assets/_Scrips/FadeScript.cs" Line="12" Column="1" />
+      <File FileName="Assets/_Scrips/FadeScript.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
