@@ -1,6 +1,4 @@
 #include <DFRobotDFPlayerMini.h>
-
-
 #include <Adafruit_NeoPixel.h>
 #include <SoftwareSerial.h>
 //LED関連
@@ -9,21 +7,25 @@ const int DATA_PIN =2;//LEDの信号線のピン番号
 //リードスイッチ関連
 const int NUM_SWITCH = 24;//リードスイッチの数
 const int reedsw[24]={13,12,11,10,9,8,7,6,5,4,3,22,23,24,25,26,27,28,29,30,31,32,33,34};//リードスイッチのピン番号
+//看板関連
+const int NUM_NEON = 20;//ネオンの数
+const int PINK_PIN = 36;//ピンク看板のpin番号
+const int BLUE_PIN = 37;//ブルー看板のpin番号
 //スタートボタン関連
 const int START_PIN=50;//スタートボタンのピン
 //ゲームモード
 const int MODE_GAME_START=2;//ゲーム開始した瞬間モード
 const int MODE_GAME_NOW=1;//ゲーム中のモード
 const int MODE_MATI=0;//ゲームしてなくて待ってるモード
-// 45秒間（ミリ秒）
+// 48秒間（ミリ秒）
 const unsigned long FF_SEC = 48L * 1000L;
 //SE関係
 SoftwareSerial mySoftwareSerial(18,19); // RX, TX
-DFRobotDFPlayerMini myDFPlayer;
+DFRobotDFPlayerMini myDFPlayer;//dfplayer使うためのやつ
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_PIXELS, DATA_PIN, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
-Adafruit_NeoPixel pinkneon =Adafruit_NeoPixel(20, 36, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
-Adafruit_NeoPixel blueneon =Adafruit_NeoPixel(20, 37, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
+Adafruit_NeoPixel pinkneon =Adafruit_NeoPixel(NUM_NEON, PINK_PIN, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
+Adafruit_NeoPixel blueneon =Adafruit_NeoPixel(NUM_NEON, BLUE_PIN, NEO_RGB + NEO_KHZ800);//NeoPixelライブラリ使うためのやつ
 uint32_t white = strip.Color(255, 255, 255);//白の色味
 uint32_t blue = strip.Color(0, 0, 255);//青の色味
 uint32_t pink = strip.Color(255, 0, 20);//ピンクの色味
@@ -41,26 +43,27 @@ int cnt0[24]={0};//0をカウント(チャタリング対策用)
 int G_mode = MODE_MATI;//モードを待ちに設定
 unsigned long G_start_time;//スタートした時間を記録
 
+const int a[8]={0,1,6,7,10,11,20,21};
+const int b[8]={4,5,8,9,14,15,18,19};
+const int c[8]={2,3,12,13,16,17,22,23};
+  int count=0;
+
 void setup() {
-  Serial.begin(38400);
+  Serial.begin(9600);
   strip.begin();
   strip.show();
   pinkneon.begin();
   pinkneon.show();
-  
-      for(int i=0;i<21;i++){
-        pinkneon.setPixelColor(i,0,255,100);
-        pinkneon.show();
-    }
-  pinkneon.show();
-  
   blueneon.begin();
   blueneon.show();
-        for(int i=0;i<21;i++){
-        blueneon.setPixelColor(i,blue);
-        blueneon.show();
+  for(int i=0;i<21;i++){
+    pinkneon.setPixelColor(i,0,255,100);
     }
-  blueneon.show();
+    pinkneon.show();
+    for(int i=0;i<21;i++){
+      blueneon.setPixelColor(i,blue);
+    }
+    blueneon.show();
   strip.setBrightness(255);
   //リードスイッチのpin設定
   for(int i=0;i<NUM_SWITCH;i++){
@@ -71,7 +74,7 @@ void setup() {
   mySoftwareSerial.begin(9600);//
   //mp3_set_serial(mySoftwareSerial);
   myDFPlayer.begin(mySoftwareSerial);
-  myDFPlayer.volume(9);
+  myDFPlayer.volume(30);
 }
 
 
@@ -203,44 +206,63 @@ void gamemode(){
   }
 }
 //=========================================================//
-// 楽しいランダムLED関数
+// 待機中のLED関数
 //=========================================================//
 void led(){
-  int r=random(4);
-  switch(r){
+  switch(count){
     case 0:
-    for(int i=0;i<NUM_PIXELS;i++){
-    strip.setPixelColor(i,pink);
-    strip.show();
+    for(int i=0;i<8;i++){
+    strip.setPixelColor(a[i],white);
+    strip.setPixelColor(b[i],pink);
+    strip.setPixelColor(c[i],blue);
     }
+    count=1;
     break;
     case 1:
-    for(int i=0;i<NUM_PIXELS;i++){
-    strip.setPixelColor(i,white);
-    strip.show();
+    for(int i=0;i<8;i++){
+    strip.setPixelColor(a[i],pink);
+    strip.setPixelColor(b[i],blue);
+    strip.setPixelColor(c[i],white);
     }
+    count=2;
     break;
     case 2:
-    for(int i=0;i<NUM_PIXELS;i++){
-    strip.setPixelColor(i,blue);
-    strip.show();
+    for(int i=0;i<8;i++){
+    strip.setPixelColor(a[i],blue);
+    strip.setPixelColor(b[i],white);
+    strip.setPixelColor(c[i],pink);
     }
-    break;
-    case 3:
-    for(int i=0;i<NUM_PIXELS;i++){
-    strip.setPixelColor(i,violet);
-    strip.show();
-    }
-    break;
-    case 4:
-    for(int i=0;i<NUM_PIXELS;i++){
-    strip.setPixelColor(i,black);
-    strip.show();
-    }
+    count=0;
     break;
   }
-  
-}
+    /*
+    for(int i=0;i<NUM_PIXELS;i++){
+      int x=count1[i]*5;
+      switch(count2[i]){
+        case 0://数字が上がっていく方
+        strip.setPixelColor(i, strip.Color(255-x, 0, 0+x));
+        if(count1[i]>46){
+          count1[i]=51;
+          count2[i]=1;
+        }
+        else
+        count1[i]+=5;
+        break;
+        case 1://数字が下がっていく方
+        strip.setPixelColor(i, strip.Color(x, 0, 255-x));
+        if(count1[i]<5){
+          count1[i]=0;
+          count2[i]=0;
+        }
+        else
+        count1[i]-=5;
+        break;
+      }
+    }
+    */
+    
+    strip.show();
+  }
 //=========================================================//
 // LED初期化関数
 //=========================================================//

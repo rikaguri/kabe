@@ -533,7 +533,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 111.35
+  m_fontSize: 83.65
   m_fontSizeBase: 294.25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5717,7 +5717,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 109.35
+  m_fontSize: 81.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6098,7 +6098,6 @@ MonoBehaviour:
   pinkParticle: {fileID: 1557329781}
   blueParticle: {fileID: 623709931}
   resetFlag: 0
-  serialHandler: {fileID: 1140654426}
 --- !u!4 &1508827979
 Transform:
   m_ObjectHideFlags: 0
@@ -11123,7 +11122,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 108.95
+  m_fontSize: 81.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

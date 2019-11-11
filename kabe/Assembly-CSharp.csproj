@@ -69,7 +69,6 @@
     <Compile Include="Assets\_Scrips\FadeScript.cs" />
     <Compile Include="Assets\_Scrips\pink.cs" />
     <Compile Include="Assets\_Scrips\ScoreManager.cs" />
-    <Compile Include="Assets\_Scrips\SerialHandler 2.cs" />
     <Compile Include="Assets\_Scrips\SerialHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
